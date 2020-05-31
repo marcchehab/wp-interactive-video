@@ -8,7 +8,7 @@ Author URI : https://twitter.com/marcchehab
 */
 
 // ----------------------------------------------------------------------------------
-// Setup + Enqueue I'm now on dev too! :) Well there u go, well done!
+// Setup + Enqueue
 // ----------------------------------------------------------------------------------
 
 define('IV_PLUGIN_URL', __FILE__);
