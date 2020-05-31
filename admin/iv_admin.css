@@ -1,0 +1,184 @@
+/*Betlists*/
+.iv_betlists tr:nth-child(even) {background: #f9f9f9}
+
+/*region Editor*/
+.form-table td p {
+    margin: 0 0 10px;
+}
+.form-table td ul {
+    margin:0;
+}
+i.mce-i-vcvideo:before {
+    font-family: "dashicons";
+    content: "\f493";
+}
+
+#tinymce embed,
+#tinymce iframe,
+#tinymce object {
+    margin-bottom: 0px;
+}
+
+.vc_admincontrols {
+    background: #60d0ff;
+    display:block;
+    margin: -10px 0 5px;
+    border-radius: 0 0 10px 10px;
+    box-sizing: border-box;
+    outline: none;
+    vertical-align: middle;
+}
+
+.vc_admincontrols .vc_settingboxes {
+    display: inline-block;
+    font-size: 10px;
+    text-align: center;
+    border-left: 1px #0000000d solid;
+    padding: 6px 3px;
+    vertical-align: top;
+    box-sizing: border-box;
+    height:100%;
+    width: 16vw;
+    max-width: 130px;
+}
+
+@media screen and (max-width: 375px) {
+    .vc_admincontrols .vc_settingboxes {
+        font-size: 9px;
+    }
+}
+
+.vcvideo.default .vc_admincontrols .vc_settingboxes:not(.vc_defaults),
+.vcvideo.usevc .vc_admincontrols .vc_settingboxes.vc_preloadcs {
+    color: #d8d8d8;
+}
+
+.vc_admincontrols img {
+    height:20px;
+    margin:10px;
+    box-sizing: border-box;
+}
+
+.mce-content-body .vc_admincontrols[contentEditable=false][data-mce-selected] {
+    outline:none;
+}
+
+.vcvideo .mce-object-iframe {
+    margin: 0;
+}
+
+.vc_admincontrols .switch {
+    position: relative;
+    display: inline-block;
+    height: 10px;
+    width: 22px;
+}
+
+.vc_admincontrols .switch input { display:none; }
+
+.vc_admincontrols .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e55454;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 5px;
+}
+.vcvideo.default .vc_admincontrols .vc_settingboxes:not(.vc_defaults) .slider, .vcvideo.usevc .vc_admincontrols .vc_settingboxes.vc_preloadcs .slider {
+    background-color: #b9b9b9;
+}
+
+.vc_admincontrols .slider::before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: -3px;
+    top: -2px;
+    background-color: #e3cdcd;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+.vc_admincontrols input:checked + .slider:before {
+    background-color: #f0f0f0;
+}
+
+.vc_admincontrols input:checked + .slider {
+    background-color: #37c837;
+}
+
+.vcvideo.default .vc_admincontrols .vc_settingboxes:not(.vc_defaults) input:checked + .slider, .vcvideo.usevc .vc_admincontrols .vc_settingboxes.vc_preloadcs input:checked + .slider {
+    background-color: #b9b9b9;
+}
+
+.vc_admincontrols input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+.vc_admincontrols input:checked + .slider:before {
+    -webkit-transform: translateX(14px);
+    -ms-transform: translateX(14px);
+    transform: translateX(14px);
+}
+
+.mce-content-body *[contentEditable=false] *[contentEditable=true].switch:hover, .mce-content-body *[contentEditable=false] *[contentEditable=true].switch:focus {
+    outline: none;
+}
+
+.mce-content-body *[contentEditable=false][data-mce-selected].vcvideo, .mce-content-body .vcvideo *[contentEditable=false][data-mce-selected] {
+    outline: none;
+}
+/*endregion*/
+/*region Control Panel*/
+#vc_details .vc_slidercontainers {
+    width:100%;
+    max-width:450px;
+    height:1em;
+}
+#vc_details .vc_sliders {
+    width:80%;
+    -webkit-appearance: none;
+    height:10px;
+    margin-left:5px;
+    border-radius:5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    padding:0;
+}
+#vc_details .vc_slideroutputs {
+    display: inline-block;
+    min-width: 2ch;
+    text-align:right;
+}
+#vc_details .vc_sliders:hover {
+    opacity: 1;
+}
+#vc_details .vc_sliders::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #5D5D5D;
+    cursor: pointer;
+}
+
+#vc_details .vc_sliders::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #5D5D5D;
+    cursor: pointer;
+}
+
+
+
+/*endregion*/
