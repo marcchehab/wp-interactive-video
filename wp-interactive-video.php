@@ -117,44 +117,6 @@ function iv_plugin_install(){
 	) $charset_collate;");
 }
 
-// FREEMIUS: Create freemius helper function for easy SDK access.
-function freemius_init() {
-    global $freemius_init;
-
-    if ( ! isset( $freemius_init ) ) {
-        // Include Freemius SDK.
-        require_once dirname(IV_PLUGIN_URL) . '/freemius/start.php';
-
-        $freemius_init = fs_dynamic_init( array(
-            'id'                  => '2238',
-            'slug'                => 'Videocomments',
-            'type'                => 'plugin',
-            'public_key'          => 'pk_4f1468aa97f4fc8359e379efb93a7',
-            'is_premium'          => true,
-            // If your plugin is a serviceware, set this option to false.
-            'has_premium_version' => true,
-            'has_addons'          => false,
-            'premium_suffix'      => 'Advanced',
-            'has_paid_plans'      => true,
-            'trial'               => array(
-                'days'               => 30,
-                'is_require_payment' => true,
-            ),
-            'menu'                => array(
-                'slug'           => 'iv',
-                'support'        => false,
-            ),
-            // Set the SDK to work in a sandbox mode (for development & testing).
-            // IMPORTANT: MAKE SURE TO REMOVE SECRET KEY BEFORE DEPLOYMENT.
-            'secret_key'          => 'sk_ui8[Z$t[.RH9AH<Jv}h;0=Nyup&nd',
-        ) );
-    }
-
-    return $freemius_init;
-}
-freemius_init();
-do_action( 'freemius_init_loaded' );
-
 // ENQUEUE: Styles and Script in head section
 add_action('wp_enqueue_scripts', 'iv_frontend_scripts');
 add_action('admin_init', 'iv_backend_scripts');
