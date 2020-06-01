@@ -33,6 +33,8 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    $(".wpcolorpicker").wpColorPicker();
+
     $(".iv_betlists .row-actions .edits").click(function(){
         $(this).parents("tr").iv_editbet();
     });

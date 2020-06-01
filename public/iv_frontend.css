@@ -639,11 +639,17 @@ body:not(.iv_moderator) .iv_containers.onlymods .iv_commentcontainers {
 
 @keyframes rotate {
     100% {
-        transform: rotate(360deg);
+        transform: rotate(360deg); 
     }
 }
 
-.iv_cosmment-list .comment {
+.iv_comment-list {
+    list-style: none;
+    padding: 0px;
+    text-shadow: none;
+}
+
+.iv_comment-list .comment.depth-1 {
     background-color: var(--iv_commentcolors_min);
 }
 .iv_comment-list .comment.moderatorcomments {

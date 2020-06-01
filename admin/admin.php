@@ -39,20 +39,16 @@ function iv_backend_optionsmenu()
                 <tr>
                     <th scope="row"> <?php _e('Colors of "Video Comments" batches','iv'); ?></th>
                     <td colspan="2">
-                        <p><i><?php _e('The filling of the batch','iv'); ?></i><br /><input class="jscolor" type="text" size="23" name="<?php echo $option; ?>[iv_batches_color]" value="<?php echo $options['iv_batches_color']; ?>" /></p>
-                        <p><i><?php _e('The font of the batch','iv'); ?></i><br /><input class="jscolor" type="text" size="23" name="<?php echo $option; ?>[iv_batches_fontcolor]" value="<?php echo $options['iv_batches_fontcolor']; ?>" /></p>
+                        <p><i><?php _e('The filling of the batch','iv'); ?></i><br /><input class="wpcolorpicker" type="text" size="23" name="<?php echo $option; ?>[iv_batches_color]" value="<?php echo $options['iv_batches_color']; ?>" data-alpha="true" /></p>
+                        <p><i><?php _e('The font of the batch','iv'); ?></i><br /><input class="wpcolorpicker" type="text" size="23" name="<?php echo $option; ?>[iv_batches_fontcolor]" value="<?php echo $options['iv_batches_fontcolor']; ?>" data-alpha="true" /></p>
                     </td>
                 </tr>
                 <tr>
                     <th scope="row"><?php _e('Comment Colors', 'iv'); ?></th>
                     <td>
-                        <p><i><?php _e('The thread(s) with the most comments', 'iv'); ?></i><br /><input class="jscolor" type="text" size="23" name="<?php echo $option; ?>[iv_commentcolors_max]"
-                                  value="<?php echo $options['iv_commentcolors_max']; ?>"/></p>
-                        <p><i><?php _e('The thread(s) with the fewest comments', 'iv'); ?></i><br /><input class="jscolor" type="text" size="23" name="<?php echo $option; ?>[iv_commentcolors_min]"
-                                  value="<?php echo $options['iv_commentcolors_min']; ?>"/></p>
-                        <p><i>Threads by moderators</i><br /><input class="jscolor" type="text" size="23"
-                                  name="<?php echo $option; ?>[iv_commentcolors_mod]"
-                                  value="<?php echo $options['iv_commentcolors_mod']; ?>"/></p>
+                        <p><i><?php _e('The thread(s) with the most comments', 'iv'); ?></i><br /><input class="wpcolorpicker" type="text" size="23" name="<?php echo $option; ?>[iv_commentcolors_max]" value="<?php echo $options['iv_commentcolors_max']; ?>" data-alpha="true" /></p>
+                        <p><i><?php _e('The thread(s) with the fewest comments', 'iv'); ?></i><br /><input class="wpcolorpicker" type="text" size="23" name="<?php echo $option; ?>[iv_commentcolors_min]" value="<?php echo $options['iv_commentcolors_min']; ?>" data-alpha="true" /></p>
+                        <p><i>Threads by moderators</i><br /><input class="wpcolorpicker" type="text" size="23" name="<?php echo $option; ?>[iv_commentcolors_mod]" value="<?php echo $options['iv_commentcolors_mod']; ?>" data-alpha="true" /></p>
                     </td>
                 <tr>
                     <th scope="row"> <?php _e('Who can comment when?', 'iv'); ?></th>

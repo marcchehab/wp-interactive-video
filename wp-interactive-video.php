@@ -124,12 +124,14 @@ add_action('enqueue_block_editor_assets', 'iv_enqueue_block_editor_assets');
 function iv_backend_scripts() {
 	if(is_admin()){
 		wp_enqueue_style('iv_backend_style',plugins_url('admin/iv_admin.css',IV_PLUGIN_URL));
-        wp_register_script('jscolor', plugins_url('admin/jscolor.min.js',IV_PLUGIN_URL));
-        wp_enqueue_script('iv_backend_script',plugins_url('admin/iv_admin.js',IV_PLUGIN_URL), array('jquery'),null,false);
-		if(isset($_GET['page']) && $_GET['page']=="iv"){
-			wp_enqueue_script( 'jscolor', 'jscolor.min.js', false );
-		}
-        add_action('admin_head', 'admin_head' );
+        //wp_register_script('jscolor', plugins_url('admin/jscolor.min.js',IV_PLUGIN_URL));
+        //if(isset($_GET['page']) && $_GET['page']=="iv"){
+		//	wp_enqueue_script( 'jscolor', 'jscolor.min.js', false );
+		//}
+        wp_enqueue_style( 'wp-color-picker' );
+        wp_enqueue_script( 'wp-color-picker-alpha', plugins_url('admin/wp-color-picker-alpha.min.js',IV_PLUGIN_URL), array( 'wp-color-picker' ), null, false );
+        wp_enqueue_script('iv_backend_script',plugins_url('admin/iv_admin.js',IV_PLUGIN_URL), array('jquery', 'wp-color-picker'),null,false);
+		add_action('admin_head', 'admin_head' );
 	}
 }
 function iv_frontend_scripts() {
@@ -171,11 +173,11 @@ function iv_frontend_scripts() {
 
         $inlinecss = "
         :root {
-            --iv_batches_color: #{$options['iv_batches_color']};
-            --iv_batches_fontcolor: #{$options['iv_batches_fontcolor']};
-            --iv_commentcolors_max: #{$options['iv_commentcolors_max']};
-            --iv_commentcolors_min: #{$options['iv_commentcolors_min']};
-            --iv_commentcolors_mod: #{$options['iv_commentcolors_mod']};
+            --iv_batches_color: {$options['iv_batches_color']};
+            --iv_batches_fontcolor: {$options['iv_batches_fontcolor']};
+            --iv_commentcolors_max: {$options['iv_commentcolors_max']};
+            --iv_commentcolors_min: {$options['iv_commentcolors_min']};
+            --iv_commentcolors_mod: {$options['iv_commentcolors_mod']};
         }";
         wp_add_inline_style( 'iv_front_style', $inlinecss );
 

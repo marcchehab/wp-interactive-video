@@ -273,22 +273,34 @@ jQuery(document).ready(function ($) {
         function d2h(d) { return d.toString(16); }  // convert a decimal value to hex
         function h2d(h) { return parseInt(h, 16); } // convert a hex value to decimal
 
-        weight = (typeof(weight) !== 'undefined') ? weight : 50; // set the weight to 50%, if that argument is omitted
-
-        var color = "#";
-
-        for(var i = 0; i <= 5; i += 2) { // loop through each of the 3 hex pairs—red, green, and blue
-            var v1 = h2d(color_1.substr(i, 2)), // extract the current pairs
-                v2 = h2d(color_2.substr(i, 2)),
-
-                // combine the current pairs from each source color, according to the specified weight
-                val = d2h(Math.floor(v2 + (v1 - v2) * (weight / 100.0)));
-
-            while(val.length < 2) { val = '0' + val; } // prepend a '0' if val results in a single digit
-
-            color += val; // concatenate val to our new color string
+        function extractrgba(colorstring) {
+            let rgba = [];
+            if (colorstring.substr(0,5)=="rgba(") {
+                rgba = colorstring.replace(/^(rgb|rgba)\(/,'').replace(/\)$/,'').replace(/\s/g,'').split(',').map(val => parseFloat(val));
+            } else if (colorstring.length==7 ) { //hex
+                rgba[0] = h2d(colorstring.replace(/#/,'').slice(0,2));
+                rgba[1] = h2d(colorstring.replace(/#/,'').slice(2,4));
+                rgba[2] = h2d(colorstring.replace(/#/,'').slice(4,6));
+                rgba[3] = 1;
+            }
+            return rgba;
         }
 
+        weight = (typeof(weight) !== 'undefined') ? weight : 50; // set the weight to 50%, if that argument is omitted
+
+        let color = "rgba(";
+        let rgba_1 = extractrgba(color_1);
+        let rgba_2 = extractrgba(color_2);
+
+        for(let i = 0; i <= 2; i += 1) { // loop through red, green, blue
+            // combine the current pairs from each source color, according to the specified weight
+            color += Math.floor(rgba_2[i] + (rgba_1[i] - rgba_2[i]) * (weight / 100.0))+", "; 
+            // color += Math.floor(Math.abs(rgba_1[i] - rgba_2[i]))+", ";
+        }
+        //handle alpha
+        color += "0."+Math.floor((rgba_2[3] + (rgba_1[3] - rgba_2[3])*1000) * (weight / 100.0))+")"; 
+
+        console.log(color)
         return color;
     };
     
