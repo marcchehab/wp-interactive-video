@@ -63,7 +63,7 @@ function seconds2human($s)
                 comment_class(empty( $args['has_children'] ));
             }?> data-comment-id="<?php comment_ID() ?>" data-comment-time = "<?php echo  $iv_comment_time; ?>" id="comment-<?php comment_ID() ?>">
 			  <article  class="iv_commentbodies">
-				<div class="gravatars"><?php echo get_avatar($comment, 58); ?></div>
+				<div class="gravatars"><?php echo get_avatar($comment_author_id, $size, $default, $alt, array( 'class' => array( 'rounded-circle', 'h-100', 'w-100' ) ) ); ?></div>
 				<div class="iv_commentcontents">
 					<div class="iv_comment-byline">
 						<span class="iv_comment-authors"><a class="iv_comment-author-link" href="<?php comment_author_url(); ?>" itemprop = "author"><?php comment_author(); ?></a></span><span class="separators">&bull;</span>
