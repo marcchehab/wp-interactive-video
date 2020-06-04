@@ -210,10 +210,10 @@ function iv_plugin_admin_menu(){
 function iv_options_defaults(){
 	$default = array(
 		'iv_api_key'   => '',
-		'iv_commentcolors_max'=> 'rgba(255,76,76,0.8)',
-		'iv_commentcolors_mod' => 'rgba(255,255,255,0.8)',
-		'iv_commentcolors_min' => 'rgba(76,232,76,0.8)',
-		'iv_commentcolors_text' => '#000000',
+		'iv_commentcolors_max'=> 'rgba(255,81,81,0.2)',
+		'iv_commentcolors_mod' => 'rgba(76,232,76,0.2)',
+		'iv_commentcolors_min' => 'rgba(0,0,0,0)',
+		'iv_commentcolors_text' => '',
 		'moderators' => '',
 		'iv_batches_color' => 'rgba(255,76,76,0.8)',
         'iv_batches_fontcolor' => '#000000',

@@ -26,7 +26,6 @@ i.mce-i-vcvideo:before {
     border-radius: 0 0 10px 10px;
     box-sizing: border-box;
     outline: none;
-    vertical-align: middle;
 }
 
 .vc_admincontrols .vc_settingboxes {

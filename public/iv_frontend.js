@@ -269,43 +269,44 @@ jQuery(document).ready(function ($) {
 
     // Mixing colors
     var mixcolors = function (color_1, color_2, weight) {
+        if (color_1 && color_2) {
+            function d2h(d) { return d.toString(16); }  // convert a decimal value to hex
+            function h2d(h) { return parseInt(h, 16); } // convert a hex value to decimal
 
-        function d2h(d) { return d.toString(16); }  // convert a decimal value to hex
-        function h2d(h) { return parseInt(h, 16); } // convert a hex value to decimal
-
-        function extractrgba(colorstring) {
-            let rgba = [];
-            if (colorstring.substr(0,5)=="rgba(") {
-                rgba = colorstring.replace(/^(rgb|rgba)\(/,'').replace(/\)$/,'').replace(/\s/g,'').split(',').map(val => parseFloat(val));
-            } else if (colorstring.length==7 ) { //hex
-                rgba[0] = h2d(colorstring.replace(/#/,'').slice(0,2));
-                rgba[1] = h2d(colorstring.replace(/#/,'').slice(2,4));
-                rgba[2] = h2d(colorstring.replace(/#/,'').slice(4,6));
-                rgba[3] = 1;
+            function extractrgba(colorstring) {
+                let rgba = [];
+                if (colorstring.substr(0,5)=="rgba(") {
+                    rgba = colorstring.replace(/^(rgb|rgba)\(/,'').replace(/\)$/,'').replace(/\s/g,'').split(',').map(val => parseFloat(val));
+                } else if (colorstring.length==7 ) { //hex
+                    rgba[0] = h2d(colorstring.replace(/#/,'').slice(0,2));
+                    rgba[1] = h2d(colorstring.replace(/#/,'').slice(2,4));
+                    rgba[2] = h2d(colorstring.replace(/#/,'').slice(4,6));
+                    rgba[3] = 1;
+                }
+                return rgba;
             }
-            return rgba;
+
+            weight = (typeof(weight) !== 'undefined') ? weight : 50; // set the weight to 50%, if that argument is omitted
+
+            let color = "rgba(";
+            let rgba_1 = extractrgba(color_1);
+            let rgba_2 = extractrgba(color_2);
+            console.log(color_1);
+            console.log(color_2);
+            console.log(rgba_1);
+            console.log(rgba_2);
+
+            for(let i = 0; i <= 2; i += 1) { // loop through red, green, blue
+                // combine the current pairs from each source color, according to the specified weight
+                color += Math.floor(rgba_2[i] + (rgba_1[i] - rgba_2[i]) * (weight / 100.0))+", "; 
+                // color += Math.floor(Math.abs(rgba_1[i] - rgba_2[i]))+", ";
+            }
+            //handle alpha
+            console.log(rgba_2[3]+" and "+rgba_2[3]+"=>"+(rgba_2[3] + (rgba_1[3] - rgba_2[3])) * 1000);
+            color += (rgba_1[3]+rgba_2[3]!==2) ? "0."+Math.floor((rgba_2[3] + (rgba_1[3] - rgba_2[3])) * 1000 * (weight / 100.0))+")" : "1)"; 
+            console.log(color);
+            return color;
         }
-
-        weight = (typeof(weight) !== 'undefined') ? weight : 50; // set the weight to 50%, if that argument is omitted
-
-        let color = "rgba(";
-        let rgba_1 = extractrgba(color_1);
-        let rgba_2 = extractrgba(color_2);
-        console.log(color_1);
-        console.log(color_2);
-        console.log(rgba_1);
-        console.log(rgba_2);
-
-        for(let i = 0; i <= 2; i += 1) { // loop through red, green, blue
-            // combine the current pairs from each source color, according to the specified weight
-            color += Math.floor(rgba_2[i] + (rgba_1[i] - rgba_2[i]) * (weight / 100.0))+", "; 
-            // color += Math.floor(Math.abs(rgba_1[i] - rgba_2[i]))+", ";
-        }
-        //handle alpha
-        console.log(rgba_2[3]+" and "+rgba_2[3]+"=>"+(rgba_2[3] + (rgba_1[3] - rgba_2[3])) * 1000);
-        color += (rgba_1[3]+rgba_2[3]!==2) ? "0."+Math.floor((rgba_2[3] + (rgba_1[3] - rgba_2[3])) * 1000 * (weight / 100.0))+")" : "1)"; 
-        console.log(color);
-        return color;
     };
     
     // CONSTRUCT iv_ids array

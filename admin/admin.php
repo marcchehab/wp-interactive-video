@@ -52,7 +52,7 @@ function iv_backend_optionsmenu()
 
                         <p><i>Threads by moderators</i><br /><input class="wpcolorpicker" type="text" size="23" name="<?php echo $option; ?>[iv_commentcolors_mod]" value="<?php echo $options['iv_commentcolors_mod']; ?>" data-alpha="true" /></p>
 
-                        <p><i>Text color</i><br /><input class="wpcolorpicker" type="text" size="23" name="<?php echo $option; ?>[iv_commentcolors_text]" value="<?php echo $options['iv_commentcolors_text']; ?>" data-alpha="true" /></p>
+                        <p><i>Text color of comments</i><br /><input class="wpcolorpicker" type="text" size="23" name="<?php echo $option; ?>[iv_commentcolors_text]" value="<?php echo $options['iv_commentcolors_text']; ?>" data-alpha="true" /></p>
                     </td>
                 <tr>
                     <th scope="row"> <?php _e('Who can comment when?', 'iv'); ?></th>
