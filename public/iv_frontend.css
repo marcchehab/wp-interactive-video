@@ -5,10 +5,6 @@
     display:block;
 }
 @media screen and (max-width: 767px) {
-    .iv_containers {
-/*         margin-left: -2em;
-        margin-right: -2em; */
-    }
     .iv_controlpanels .iv_volumebuttons {
         display:none;
     }
@@ -606,16 +602,15 @@ body:not(.iv_moderator) .iv_containers.onlymods .iv_commentcontainers {
     transition-duration: 0.3s;
     transition-property: transform;
 }
-.iv_commentstatus.rotating {
-    -webkit-animation: rotation 2s infinite linear;
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg); 
+    }
 }
-@-webkit-keyframes rotation {
-    from {
-        -webkit-transform: rotate(0deg);
-    }
-    to {
-        -webkit-transform: rotate(359deg);
-    }
+.iv_commentstatus.rotating {
+    animation: rotate 2s infinite linear;
+    -webkit-animation: rotate 2s infinite linear;
 }
 .iv_errorprompts .moderrors, .iv_errorprompts .limiterrors {
     display:none;
@@ -637,16 +632,9 @@ body:not(.iv_moderator) .iv_containers.onlymods .iv_commentcontainers {
     text-transform:capitalize;
 }
 
-@keyframes rotate {
-    100% {
-        transform: rotate(360deg); 
-    }
-}
-
 .iv_comment-list {
     list-style: none;
     padding: 0px;
-    text-shadow: none;
 }
 
 .iv_comment-list .comment.depth-1 {
@@ -660,12 +648,16 @@ body:not(.iv_moderator) .iv_containers.onlymods .iv_commentcontainers {
     margin-left: 0px;
 }
 
-.iv_commentcontainers .iv_comment-list .iv_commentbodies a {
+.iv_commentcontainers {
+    color: var(--iv_commentcolors_text);
+}
+
+.iv_commentcontainers .iv_commentbodies a {
     text-decoration: none;
+    color: var(--iv_commentcolors_text);
 }
 
 .iv_commentcontainers .gravatars {
-    display: inline-block;
     width: 10%;
     float: left;
     padding:5px;
@@ -693,18 +685,16 @@ body:not(.iv_moderator) .iv_containers.onlymods .iv_commentcontainers {
 .iv_commentbodies .separators {
     width:5px;
     margin:0px 5px;
-    color: rgba(117, 117, 117, .3);
+    opacity: 0.5;
 }
 
 .iv_commentcontainers .comment-edit-link, .entry-content .iv_comment_times a, .iv_comment_dates, .iv_replylinks, .iv_expand_comment_thread, .iv_comment-author-link {
-    color:rgba(128, 128, 128, 0.77);
     font-size: 0.9rem;
 }
 
 .iv_commentcontainers .iv_comment-author-link {
     text-transform: capitalize;
     font-weight: 700;
-    color:black;
 }
 
 .iv_commentbodies .comment-edit-link, .entry-content .iv_comment_times a, .iv_replylinks, .iv_expand_comment_thread {
@@ -724,10 +714,6 @@ body:not(.iv_moderator) .iv_containers.onlymods .iv_commentcontainers {
 .entry-content .iv_commentbodies a, .entry-content .iv_commentbodies a:hover, .entry-content .iv_commentbodies a:focus {
     box-shadow: none;
     -webkit-box-shadow: none;
-}
-
-.iv_commentbodies .comment-content.post-content p {
-    color: #141414;
 }
 
 ul.children {

@@ -291,6 +291,10 @@ jQuery(document).ready(function ($) {
         let color = "rgba(";
         let rgba_1 = extractrgba(color_1);
         let rgba_2 = extractrgba(color_2);
+        console.log(color_1);
+        console.log(color_2);
+        console.log(rgba_1);
+        console.log(rgba_2);
 
         for(let i = 0; i <= 2; i += 1) { // loop through red, green, blue
             // combine the current pairs from each source color, according to the specified weight
@@ -298,9 +302,9 @@ jQuery(document).ready(function ($) {
             // color += Math.floor(Math.abs(rgba_1[i] - rgba_2[i]))+", ";
         }
         //handle alpha
-        color += "0."+Math.floor((rgba_2[3] + (rgba_1[3] - rgba_2[3])*1000) * (weight / 100.0))+")"; 
-
-        console.log(color)
+        console.log(rgba_2[3]+" and "+rgba_2[3]+"=>"+(rgba_2[3] + (rgba_1[3] - rgba_2[3])) * 1000);
+        color += (rgba_1[3]+rgba_2[3]!==2) ? "0."+Math.floor((rgba_2[3] + (rgba_1[3] - rgba_2[3])) * 1000 * (weight / 100.0))+")" : "1)"; 
+        console.log(color);
         return color;
     };
     

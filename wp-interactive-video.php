@@ -147,6 +147,7 @@ function iv_frontend_scripts() {
             'minColor' => $options['iv_commentcolors_min'],
             'maxColor' => $options['iv_commentcolors_max'],
             'modColor' => $options['iv_commentcolors_mod'],
+            'textColor' => $options['iv_commentcolors_text'],
             'moderatorreservetime' => $options['iv_moderatorreservetime'],
 			'isModerator' => $is_moderator,
             'commentslimit' => $options['iv_commentslimit']
@@ -178,6 +179,7 @@ function iv_frontend_scripts() {
             --iv_commentcolors_max: {$options['iv_commentcolors_max']};
             --iv_commentcolors_min: {$options['iv_commentcolors_min']};
             --iv_commentcolors_mod: {$options['iv_commentcolors_mod']};
+            --iv_commentcolors_text: {$options['iv_commentcolors_text']};
         }";
         wp_add_inline_style( 'iv_front_style', $inlinecss );
 
@@ -208,11 +210,12 @@ function iv_plugin_admin_menu(){
 function iv_options_defaults(){
 	$default = array(
 		'iv_api_key'   => '',
-		'iv_commentcolors_max'=> '#AB1639',
-		'iv_commentcolors_mod' => '#AB1639',
-		'iv_commentcolors_min' => '#AB1639',
+		'iv_commentcolors_max'=> 'rgba(255,76,76,0.8)',
+		'iv_commentcolors_mod' => 'rgba(255,255,255,0.8)',
+		'iv_commentcolors_min' => 'rgba(76,232,76,0.8)',
+		'iv_commentcolors_text' => '#000000',
 		'moderators' => '',
-		'iv_batches_color' => '#FF6161',
+		'iv_batches_color' => 'rgba(255,76,76,0.8)',
         'iv_batches_fontcolor' => '#000000',
         'iv_showlogin' => true,
         'iv_lazyloadv' => true,
@@ -226,12 +229,13 @@ function iv_options_defaults(){
 function iv_updates() {
     $options = $_POST['iv_options'];
     $update_val = array(
-        'iv_commentcolors_max'=> '#'.$options['iv_commentcolors_max'],
-		'iv_commentcolors_mod'=> '#'.$options['iv_commentcolors_mod'],
+        'iv_commentcolors_max'=> $options['iv_commentcolors_max'],
+		'iv_commentcolors_mod'=> $options['iv_commentcolors_mod'],
+		'iv_commentcolors_min' => $options['iv_commentcolors_min'],
+		'iv_commentcolors_text' => $options['iv_commentcolors_text'],
 		'moderators' => $options['moderators'],	
-		'iv_commentcolors_min' => '#'.$options['iv_commentcolors_min'],
-        'iv_batches_color' => '#'.$options['iv_batches_color'],
-        'iv_batches_fontcolor' => '#'.$options['iv_batches_fontcolor'],
+        'iv_batches_color' => $options['iv_batches_color'],
+        'iv_batches_fontcolor' => $options['iv_batches_fontcolor'],
         'iv_showlogin' => $options['iv_showlogin'],
         'iv_preloadcomments' => $options['iv_preloadcomments'],
         'iv_moderatorreservetime' => $options['iv_moderatorreservetime'],
